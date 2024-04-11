@@ -149,22 +149,28 @@ MEDIA_URL = "/media/"
 
 
 # AWS S3 storage configuration
+AWS_STORAGE_BUCKET_NAME = os.environ.get('DEFAULT_STORAGE_BUCKET', '')
 AWS_ACCESS_KEY_ID = os.environ.get('DEFAULT_STORAGE_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('DEFAULT_STORAGE_SECRET_ACCESS_KEY', '')
-AWS_S3_REGION_NAME = os.environ.get('DEFAULT_STORAGE_REGION', '')
-AWS_STORAGE_BUCKET_NAME=os.environ.get('DEFAULT_STORAGE_BUCKET', '')
 AWS_S3_CUSTOM_DOMAIN = os.environ.get('DEFAULT_STORAGE_CUSTOM_DOMAIN', '')
+AWS_S3_REGION_NAME = os.environ.get('DEFAULT_STORAGE_REGION', '')
 AWS_S3_OBJECT_PARAMETERS = {
     'ACL': 'public-read',
     'CacheControl': 'max-age=86400',
 }
+AWS_S3_FILE_OVERWRITE = False
 
 
 # Default storage settings, with the staticfiles storage updated.
 # See https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-STORAGES
+STORAGE_BACKEND = "django.core.files.storage.FileSystemStorage"
+
+if AWS_SECRET_ACCESS_KEY:
+    STORAGE_BACKEND = "storages.backends.s3boto3.S3Boto3Storage"
+
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+        "BACKEND": STORAGE_BACKEND,
     },
     # ManifestStaticFilesStorage is recommended in production, to prevent
     # outdated JavaScript / CSS assets being served from cache
