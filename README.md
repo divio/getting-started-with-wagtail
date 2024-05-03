@@ -1,6 +1,6 @@
 # Getting Started with Wagtail
 
-[![Deploy to Divio](https://img.shields.io/badge/DEPLOY-TO%20DIVIO-DFFF67?logo=docker&logoColor=white&labelColor=333333)](https://control.divio.com/app/new/?template_url=https://github.com/divio/getting-started-with-wagtail/archive/refs/heads/main.zip)
+[![Deploy to Divio](https://docs.divio.com/deploy-to-divio.svg)](https://control.divio.com/app/new/?template_url=https://github.com/divio/getting-started-with-wagtail/archive/refs/heads/main.zip)
 
 Welcome to our QuickStart template – your portal to swift application development and seamless local testing. Whether you're delving into Wagtail for the first time or optimizing your workflow, our template, based on Wagtails' [Quick install tutorial](https://docs.wagtail.org/en/stable/getting_started/quick_install.html#quick-install), has got you covered.
 
